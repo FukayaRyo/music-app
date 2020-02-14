@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.App-containar {
+  background-color: #f4f4f4;
+}
+
+.MuiButtonGroup-root.Button {
+  display: flex;
+  margin: auto;
+  width: 90%;
+}
