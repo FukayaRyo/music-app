@@ -13,7 +13,7 @@ const GenreMusic = ({ match }) => {
   const [music, setMusic] = useState([]);
   const dispatch = useDispatch();
   const state = useSelector(s => s);
-  const { PlayList, SongData } = state;
+  const { PlayList } = state;
 
   const getMusicData = async () => {
     const response = await axios.get(
