@@ -8,15 +8,15 @@ export const initialState = {
     }
   ],
   isPlaying: false,
-  SongData: [1]
+  SongData: []
 };
 
-export const SongReducer = (state, action) => {
+export const songReducer = (state, action) => {
   switch (action.type) {
     case "SETSONGDATA":
       return {
         ...state,
-        SongData: [action.songData, ...state.SongData]
+        SongData: action.songData
       };
     case "ON_PAUSE":
       return { ...state, isPlaying: false };

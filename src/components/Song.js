@@ -41,32 +41,32 @@ export default function Song({ info, index }) {
   const state = useSelector(s => s);
   const { isPlaying, PlayList } = state;
 
-  const songUrl = info.waveform_url;
+  const songUrl = info.stream_url;
   const songTitle = info.title;
   const songPhoto = info.artwork_url;
 
   const audioElement = document.getElementById("audio");
 
-  const TogglePlay = () => {
-    if (PlayList[0].AudioUrl !== info.waveform_url) {
+  const togglePlay = () => {
+    if (PlayList[0].AudioUrl !== info.stream_url) {
       dispatch(setUrl(songUrl, songTitle, songPhoto));
       console.log("NewSongPlay");
-      // setTimeout(() => audioElement.play(), 1000);
+      setTimeout(() => audioElement.play(), 1000);
     } else {
       if (isPlaying) {
         dispatch(onPause());
         console.log("pause");
-        // audioElement.pause();
+        audioElement.pause();
       } else {
         dispatch(onPlay());
         console.log("play");
-        // audioElement.play();
+        setTimeout(() => audioElement.play(), 1000);
       }
     }
   };
 
   return (
-    <Card className={classes.root} key={index} onClick={TogglePlay}>
+    <Card className={classes.root} key={index} onClick={togglePlay}>
       <CardActionArea className={classes.containar}>
         <CardMedia className={classes.cover} image={info.artwork_url} />
         <div className={classes.details}>

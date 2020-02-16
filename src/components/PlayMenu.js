@@ -26,10 +26,12 @@ const useStyles = makeStyles(theme => ({
 const PlayMenu = () => {
   const dispatch = useDispatch();
   const state = useSelector(s => s);
-  const { PlayList, isPlaying } = state;
+  const { PlayList, isPlaying, SongData } = state;
   const classes = useStyles();
 
-  const SkipPrevSong = () => {
+  const audioElement = document.getElementById("audio");
+
+  const skipPrevSong = () => {
     if (PlayList[0].AudioUrl === "") {
       return state;
     } else {
@@ -40,26 +42,41 @@ const PlayMenu = () => {
           PlayList[1].AudiophotoUrl
         )
       );
+      setTimeout(() => audioElement.play(), 1000);
     }
   };
 
-  const PlayPause = () => {
+  const playPause = () => {
     if (PlayList[0].AudioUrl === "") {
       return state;
     } else if (isPlaying) {
       dispatch(onPause());
       console.log("pause");
-      // audioElement.pause();
+      audioElement.pause();
     } else {
       dispatch(onPlay());
       console.log("play");
-      // audioElement.play();
+      audioElement.play();
     }
   };
 
-  // console.log("playlist", PlayList);
-  // console.log("PlayList[0]", PlayList[0].AudioTitle);
-  // console.log(isPlaying);
+  const songIndex = SongData.findIndex(
+    v => v.stream_url === PlayList[0].AudioUrl
+  );
+
+  const skipNextSong = () => {
+    if (SongData[songIndex]) {
+      dispatch(
+        setUrl(
+          SongData[songIndex + 1].stream_url,
+          SongData[songIndex + 1].title,
+          SongData[songIndex + 1].artwork_url
+        )
+      );
+      setTimeout(() => audioElement.play(), 1000);
+    }
+    return;
+  };
 
   return (
     <div className={classes.root}>
@@ -74,18 +91,18 @@ const PlayMenu = () => {
           <IconButton aria-label="previous">
             <SkipPreviousIcon
               className={classes.playIcon}
-              onClick={SkipPrevSong}
+              onClick={skipPrevSong}
             />
           </IconButton>
           <IconButton>
             {isPlaying ? (
-              <PauseIcon className={classes.playIcon} onClick={PlayPause} />
+              <PauseIcon className={classes.playIcon} onClick={playPause} />
             ) : (
-              <PlayArrowIcon className={classes.playIcon} onClick={PlayPause} />
+              <PlayArrowIcon className={classes.playIcon} onClick={playPause} />
             )}
           </IconButton>
           <IconButton>
-            <SkipNextIcon className={classes.playIcon} />
+            <SkipNextIcon className={classes.playIcon} onClick={skipNextSong} />
           </IconButton>
         </Toolbar>
       </Paper>

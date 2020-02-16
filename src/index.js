@@ -6,9 +6,9 @@ import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import { SongReducer, initialState } from "./SongReducer";
+import { songReducer, initialState } from "./songReducer";
 
-const store = createStore(SongReducer, initialState);
+const store = createStore(songReducer, initialState);
 
 ReactDOM.render(
   <Provider store={store}>

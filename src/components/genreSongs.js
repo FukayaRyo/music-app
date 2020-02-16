@@ -6,10 +6,10 @@ import { clientId } from "./url";
 import "../style/genreSongs.css";
 import PlayMenu from "./PlayMenu";
 import { useDispatch, useSelector } from "react-redux";
-import { onPause, onPlay, setSongData } from "../action/Playsong";
+import { setSongData } from "../action/Playsong";
 
 const GenreMusic = ({ match }) => {
-  const TargetGenre = match.params.genre;
+  const targetGenre = match.params.genre;
   const [music, setMusic] = useState([]);
   const dispatch = useDispatch();
   const state = useSelector(s => s);
@@ -17,18 +17,17 @@ const GenreMusic = ({ match }) => {
 
   const getMusicData = async () => {
     const response = await axios.get(
-      `${musicUrl}${clientId}&tags=${TargetGenre}`
+      `${musicUrl}&${clientId}&tags=${targetGenre}`
     );
     setMusic(response.data.collection);
   };
 
   useEffect(() => {
     getMusicData();
-  }, [TargetGenre]);
+  }, [targetGenre]);
 
   useEffect(() => {
     dispatch(setSongData(music));
-    console.log("SongData", SongData);
   }, [music]);
 
   const musicLists = useMemo(() => {
@@ -40,7 +39,7 @@ const GenreMusic = ({ match }) => {
   return (
     <div>
       <PlayMenu className="PlayMenu" />
-      {/* <audio id="audio" src={`${PlayList[0].AudioUrl}${clientId}`}></audio> */}
+      <audio id="audio" src={`${PlayList[0].AudioUrl}?${clientId}`}></audio>
       <div className="List">{musicLists}</div>
     </div>
   );
