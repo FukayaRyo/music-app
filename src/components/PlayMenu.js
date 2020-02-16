@@ -51,11 +51,9 @@ const PlayMenu = () => {
       return state;
     } else if (isPlaying) {
       dispatch(onPause());
-      console.log("pause");
       audioElement.pause();
     } else {
       dispatch(onPlay());
-      console.log("play");
       audioElement.play();
     }
   };

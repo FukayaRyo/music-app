@@ -50,16 +50,13 @@ export default function Song({ info, index }) {
   const togglePlay = () => {
     if (PlayList[0].AudioUrl !== info.stream_url) {
       dispatch(setUrl(songUrl, songTitle, songPhoto));
-      console.log("NewSongPlay");
       setTimeout(() => audioElement.play(), 1000);
     } else {
       if (isPlaying) {
         dispatch(onPause());
-        console.log("pause");
         audioElement.pause();
       } else {
         dispatch(onPlay());
-        console.log("play");
         setTimeout(() => audioElement.play(), 1000);
       }
     }
