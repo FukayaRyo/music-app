@@ -1,0 +1,18 @@
+.PlayingSong {
+  background-color: lightsteelblue;
+  opacity: 0.2;
+  z-index: 4;
+  display: "flex";
+  width: 200;
+  height: 220;
+  margin: 5;
+  color: "rgba(0, 0, 88, 0.87)";
+}
+
+.Songcards {
+  display: "flex";
+  width: 200;
+  height: 220;
+  margin: 5;
+  color: "rgba(0, 0, 88, 0.87)";
+}
