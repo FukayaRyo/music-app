@@ -8,7 +8,6 @@ import PauseIcon from "@material-ui/icons/Pause";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
 import { useDispatch, useSelector } from "react-redux";
 import "../style/PlayMenu.css";
-import Paper from "@material-ui/core/Paper";
 import { onPause, onPlay, setUrl } from "../action/Playsong";
 
 const useStyles = makeStyles(theme => ({
@@ -67,7 +66,6 @@ const PlayMenu = () => {
       );
       setTimeout(() => audioElement.play(), 1000);
     }
-    return;
   };
 
   return (

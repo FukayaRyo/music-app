@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
       display: "flex",
       backgroundColor: "white",
       width: 200,
-      height: 220,
+      height: 280,
       margin: 5,
       color: "rgba(0, 0, 88, 0.87)"
     },
@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
       display: "flex",
       backgroundColor: "lightsteelblue",
       width: 200,
-      height: 220,
+      height: 280,
       margin: 5,
       color: "rgba(0, 0, 88, 0.87)",
       zIndex: 2,
@@ -56,10 +56,11 @@ const useStyles = makeStyles(theme => ({
   },
   cover: {
     "@media screen and (min-width: 500px)": {
-      height: 150,
+      height: 175,
       border: "outset",
       borderWidth: "thin",
-      objectFit: "contain"
+      objectFit: "contain",
+      margin: 5
     },
     "@media screen and (max-width: 500px)": {
       height: 80,
@@ -69,7 +70,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   content: {
-    height: 12,
+    height: 40,
     zIndex: 1
   },
   title: {
@@ -86,13 +87,27 @@ export default function Song({ info, index }) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const state = useSelector(s => s);
-  const { isPlaying, PlayList } = state;
+  const { isPlaying, PlayList, SongData } = state;
 
   const songUrl = info.stream_url;
   const songTitle = info.title;
   const songPhoto = info.artwork_url;
+  const songIndex = SongData.findIndex(
+    v => v.stream_url === PlayList[0].AudioUrl
+  );
 
   const audioElement = document.getElementById("audio");
+  audioElement.addEventListener("ended", function() {
+    if (PlayList[0].AudioUrl === info.stream_url)
+      dispatch(
+        setUrl(
+          SongData[songIndex + 1].stream_url,
+          SongData[songIndex + 1].title,
+          SongData[songIndex + 1].artwork_url
+        )
+      );
+    setTimeout(() => audioElement.play(), 1000);
+  });
 
   const togglePlay = () => {
     if (PlayList[0].AudioUrl !== info.stream_url) {
