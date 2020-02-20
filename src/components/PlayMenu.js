@@ -1,7 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
@@ -13,14 +12,9 @@ import Paper from "@material-ui/core/Paper";
 import { onPause, onPlay, setUrl } from "../action/Playsong";
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    display: "flex",
-    color: "rgba(0, 0, 88, 0.87)"
-  },
   menuButton: {
     marginRight: theme.spacing(2)
-  },
-  title: {}
+  }
 }));
 
 const PlayMenu = () => {
@@ -77,34 +71,30 @@ const PlayMenu = () => {
   };
 
   return (
-    <div className={classes.root}>
-      <Paper className="paper">
-        <Toolbar>
-          <img src={PlayList[0].AudiophotoUrl} alt="" />
-          <div className="titlebox">
-            <Typography variant="h6" className={classes.title}>
-              {PlayList[0].AudioTitle}
-            </Typography>
-          </div>
-          <IconButton aria-label="previous">
-            <SkipPreviousIcon
-              className={classes.playIcon}
-              onClick={skipPrevSong}
-            />
-          </IconButton>
-          <IconButton>
-            {isPlaying ? (
-              <PauseIcon className={classes.playIcon} onClick={playPause} />
-            ) : (
-              <PlayArrowIcon className={classes.playIcon} onClick={playPause} />
-            )}
-          </IconButton>
-          <IconButton>
-            <SkipNextIcon className={classes.playIcon} onClick={skipNextSong} />
-          </IconButton>
-        </Toolbar>
-      </Paper>
-    </div>
+    <Toolbar className="Toolbar">
+      <img src={PlayList[0].AudiophotoUrl} alt="" className="image" />
+      <div className="titlebox">
+        <div className="Title">{PlayList[0].AudioTitle}</div>
+      </div>
+      <div className="player">
+        <IconButton aria-label="previous">
+          <SkipPreviousIcon
+            className={classes.playIcon}
+            onClick={skipPrevSong}
+          />
+        </IconButton>
+        <IconButton>
+          {isPlaying ? (
+            <PauseIcon className={classes.playIcon} onClick={playPause} />
+          ) : (
+            <PlayArrowIcon className={classes.playIcon} onClick={playPause} />
+          )}
+        </IconButton>
+        <IconButton>
+          <SkipNextIcon className={classes.playIcon} onClick={skipNextSong} />
+        </IconButton>
+      </div>
+    </Toolbar>
   );
 };
 

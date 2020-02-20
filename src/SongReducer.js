@@ -1,7 +1,7 @@
 export const initialState = {
   PlayList: [
     {
-      AudioTitle: "* NO PLAYING SONG",
+      AudioTitle: "",
       AudioUrl: "",
       AudiophotoUrl:
         "https://i1.sndcdn.com/artworks-000041124475-2lu7vg-large.jpg"

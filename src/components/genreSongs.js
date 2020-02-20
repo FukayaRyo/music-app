@@ -7,6 +7,7 @@ import "../style/genreSongs.css";
 import PlayMenu from "./PlayMenu";
 import { useDispatch, useSelector } from "react-redux";
 import { setSongData } from "../action/Playsong";
+import GenreBar from "./GenreBar";
 
 const GenreMusic = ({ match }) => {
   const targetGenre = match.params.genre;
@@ -36,9 +37,20 @@ const GenreMusic = ({ match }) => {
     });
   }, [music]);
 
+  const viewPlayMenu = useMemo(() => {
+    if (PlayList.length > 1)
+      return (
+        <div className="PlayMenu">
+          <PlayMenu />
+        </div>
+      );
+    return <div />;
+  }, [PlayList.length > 1]);
+
   return (
     <div>
-      <PlayMenu className="PlayMenu" />
+      <GenreBar match={match} />
+      {viewPlayMenu}
       <audio id="audio" src={`${PlayList[0].AudioUrl}?${clientId}`}></audio>
       <div className="List">{musicLists}</div>
     </div>

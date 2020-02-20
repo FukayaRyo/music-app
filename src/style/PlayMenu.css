@@ -1,34 +1,62 @@
-.makeStyles-root-56 {
-  width: 90%;
-}
-
-.MuiPaper-root.paper.MuiPaper-elevation1.MuiPaper-rounded {
+.MuiToolbar-root.MuiToolbar-regular.Toolbar.MuiToolbar-gutters {
   width: 100%;
 }
 
-.Toolbar {
-  height: 55px;
-  justify-content: left;
+@media screen and (min-width: 500px) {
+  .Toolbar {
+    height: 60px;
+    justify-content: left;
+    background-color: white;
+  }
+
+  .image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .Title {
+    width: 500px;
+    font-size: 13px;
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .player {
+    background-color: white;
+    border: outset lightsteelblue;
+    border-radius: 30%;
+  }
 }
 
-.image {
-  width: 50px;
-  height: 50px;
-}
+@media screen and (max-width: 500px) {
+  .Toolbar {
+    justify-content: left;
+    padding: 2px;
+    background-color: white;
+  }
 
-.titlebox {
-  font-size: xx-large;
-}
+  .image {
+    width: 60px;
+    height: 60px;
+  }
 
-.Title {
-  width: 500px;
-  font-size: 13px;
-  margin: 10px;
-  padding: 10px;
-}
+  .Title {
+    width: 120px;
+    font-size: 8px;
+    margin: 10px;
+    padding: 10px;
+  }
 
-.player {
-  background-color: white;
-  border: outset lightsteelblue;
-  border-radius: 30%;
+  .player {
+    background-color: white;
+    border: outset lightsteelblue;
+    border-radius: 30%;
+    display: flex;
+  }
+  .MuiButtonBase-root.MuiIconButton-root {
+    width: 15;
+    height: 15;
+    margin: 5px;
+    padding: 2px;
+  }
 }

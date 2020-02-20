@@ -7,31 +7,78 @@ import Typography from "@material-ui/core/Typography";
 import { useDispatch, useSelector } from "react-redux";
 import { onPause, onPlay, setUrl } from "../action/Playsong";
 import CardActionArea from "@material-ui/core/CardActionArea";
-import "../style/Song.css";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: "flex",
-    backgroundColor: "white",
-    width: 200,
-    height: 220,
-    margin: 5,
-    color: "rgba(0, 0, 88, 0.87)"
+    "@media screen and (min-width: 500px)": {
+      display: "flex",
+      backgroundColor: "white",
+      width: 200,
+      height: 220,
+      margin: 5,
+      color: "rgba(0, 0, 88, 0.87)"
+    },
+    "@media screen and (max-width: 500px)": {
+      display: "flex",
+      backgroundColor: "white",
+      width: 146,
+      height: 180,
+      margin: 5,
+      color: "rgba(0, 0, 88, 0.87)"
+    }
+  },
+  playingSong: {
+    "@media screen and (min-width: 500px)": {
+      display: "flex",
+      backgroundColor: "lightsteelblue",
+      width: 200,
+      height: 220,
+      margin: 5,
+      color: "rgba(0, 0, 88, 0.87)",
+      zIndex: 2,
+      opacity: 0.7,
+      border: "solid"
+    },
+    "@media screen and (max-width: 500px)": {
+      display: "flex",
+      backgroundColor: "lightsteelblue",
+      width: 146,
+      height: 180,
+      margin: 5,
+      color: "rgba(0, 0, 88, 0.87)",
+      zIndex: 2,
+      opacity: 0.7,
+      border: "solid"
+    }
   },
   containar: {
     margin: "auto"
   },
   cover: {
-    height: 150,
-    border: "outset",
-    borderWidth: "thin",
-    objectFit: "contain"
+    "@media screen and (min-width: 500px)": {
+      height: 150,
+      border: "outset",
+      borderWidth: "thin",
+      objectFit: "contain"
+    },
+    "@media screen and (max-width: 500px)": {
+      height: 80,
+      border: "outset",
+      borderWidth: "thin",
+      objectFit: "contain"
+    }
   },
   content: {
-    height: 12
+    height: 12,
+    zIndex: 1
   },
   title: {
-    fontSize: 11
+    "@media screen and (min-width: 500px)": {
+      fontSize: 12
+    },
+    "@media screen and (max-width: 500px)": {
+      fontSize: 8
+    }
   }
 }));
 
@@ -62,8 +109,13 @@ export default function Song({ info, index }) {
     }
   };
 
+  const playingSong =
+    PlayList[0].AudioUrl === info.stream_url
+      ? classes.playingSong
+      : classes.root;
+
   return (
-    <Card className={classes.root} key={index} onClick={togglePlay}>
+    <Card className={playingSong} key={index} onClick={togglePlay}>
       <CardActionArea className={classes.containar}>
         <CardMedia className={classes.cover} image={info.artwork_url} />
         <div className={classes.details}>

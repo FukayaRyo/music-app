@@ -1,30 +1,63 @@
 .GenreBar {
   background-color: #eeeeee;
-  text-align: center;
+  display: flex;
 }
 
 .MuiButtonGroup-root.ButtonGroup {
+  display: flex;
   margin: auto;
-  width: 90%;
-  padding: 5px 10px;
-  margin: 5px 10px;
+  width: 98%;
   background-color: eeeeee;
+  flex-wrap: wrap;
+  align-content: center;
+  padding-bottom: 10px;
+}
+@media screen and (min-width: 500px) {
+  .MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButtonGroup-grouped.MuiButtonGroup-groupedHorizontal.MuiButtonGroup-groupedOutlined.MuiButtonGroup-groupedOutlinedHorizontal.MuiButtonGroup-groupedOutlinedPrimary.Buttons.MuiButton-outlinedPrimary {
+    background-color: #888888;
+    width: 12.5%;
+    border-radius: 0%;
+    font-size: x-small;
+  }
+
+  .MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButtonGroup-grouped.MuiButtonGroup-groupedHorizontal.MuiButtonGroup-groupedOutlined.MuiButtonGroup-groupedOutlinedHorizontal.MuiButtonGroup-groupedOutlinedPrimary.Buttons.MuiButton-outlinedPrimary:hover {
+    background-color: #005fff;
+    width: 12.5%;
+    opacity: 0.7;
+    border-radius: 0%;
+    font-size: x-small;
+  }
+
+  .MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButtonGroup-grouped.MuiButtonGroup-groupedHorizontal.MuiButtonGroup-groupedOutlined.MuiButtonGroup-groupedOutlinedHorizontal.MuiButtonGroup-groupedOutlinedPrimary.ClickButton.MuiButton-outlinedPrimary {
+    width: 12.5%;
+    background-color: #005fff;
+    border-radius: 0%;
+    font-size: x-small;
+  }
 }
 
-.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButtonGroup-grouped.MuiButtonGroup-groupedHorizontal.MuiButtonGroup-groupedOutlined.MuiButtonGroup-groupedOutlinedHorizontal.MuiButtonGroup-groupedOutlinedPrimary.Buttons.MuiButton-outlinedPrimary {
-  background-color: #888888;
-  width: 12%;
-}
+@media screen and (max-width: 500px) {
+  .MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButtonGroup-grouped.MuiButtonGroup-groupedHorizontal.MuiButtonGroup-groupedOutlined.MuiButtonGroup-groupedOutlinedHorizontal.MuiButtonGroup-groupedOutlinedPrimary.Buttons.MuiButton-outlinedPrimary {
+    background-color: #888888;
+    width: 25%;
+    border-radius: 0%;
+    font-size: x-small;
+  }
 
-.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButtonGroup-grouped.MuiButtonGroup-groupedHorizontal.MuiButtonGroup-groupedOutlined.MuiButtonGroup-groupedOutlinedHorizontal.MuiButtonGroup-groupedOutlinedPrimary.Buttons.MuiButton-outlinedPrimary:hover {
-  background-color: #005fff;
-  width: 12%;
-  opacity: 0.7;
-}
+  .MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButtonGroup-grouped.MuiButtonGroup-groupedHorizontal.MuiButtonGroup-groupedOutlined.MuiButtonGroup-groupedOutlinedHorizontal.MuiButtonGroup-groupedOutlinedPrimary.Buttons.MuiButton-outlinedPrimary:hover {
+    background-color: #005fff;
+    width: 25%;
+    opacity: 0.7;
+    border-radius: 0%;
+    font-size: x-small;
+  }
 
-.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButtonGroup-grouped.MuiButtonGroup-groupedHorizontal.MuiButtonGroup-groupedOutlined.MuiButtonGroup-groupedOutlinedHorizontal.MuiButtonGroup-groupedOutlinedPrimary.ClickButton.MuiButton-outlinedPrimary {
-  width: 12%;
-  background-color: #005fff;
+  .MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButtonGroup-grouped.MuiButtonGroup-groupedHorizontal.MuiButtonGroup-groupedOutlined.MuiButtonGroup-groupedOutlinedHorizontal.MuiButtonGroup-groupedOutlinedPrimary.ClickButton.MuiButton-outlinedPrimary {
+    width: 25%;
+    background-color: #005fff;
+    border-radius: 0%;
+    font-size: x-small;
+  }
 }
 
 a,
